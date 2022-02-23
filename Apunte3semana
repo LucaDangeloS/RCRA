@@ -1,0 +1,14 @@
+book(quijote,hamlet,biblia).
+self(quijote).
+{self(x):book(x)}.
+{catalog(x) :- not self(x)}
+
+
+------Otro ejercicio--------
+
+p(x) :- q(x), not b(x).
+b(x) :- r(x), not p(x).
+r(nixon).
+q(nixon).
+r(reagan).
+
