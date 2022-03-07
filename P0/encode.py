@@ -5,7 +5,7 @@ if __name__ == '__main__':
     row = -1
     extra_vals = ["a", "b", "c"]
     lp_code = ""
-    
+
     for line in sys.stdin:
         row += 1
         for idx, digit in enumerate(line):
@@ -19,6 +19,6 @@ if __name__ == '__main__':
     if diff > 0:
         temp = "val("
         for i in range(diff):
-            temp += f"{extra_vals[i]};"
+            temp += f"{extra_vals[i]};" # val(a;b;c).
         lp_code += temp + ")."
     print(lp_code)

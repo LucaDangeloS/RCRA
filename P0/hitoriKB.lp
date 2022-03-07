@@ -20,6 +20,7 @@ adj(X,Y) :- adj(Y,X), X!=Y. %Si casilla a adyacente de b, b es adyacente de a ta
 :- black(X), black(Y), adj(X, Y). %Las casillas negras no pueden ser adyacentes
 :- white(c(X,Y), V), white(c(X,Y'), V), Y!=Y'. %Restriccion de no tener el mismo numero en la misma columna
 :- white(c(X,Y), V), white(c(X',Y), V), X!=X'. %Restriccion de no tener el mismo numero en la misma fila
+% :- cell(c(X,Y),V), black(c(X,Y)), 
 % :- black(c(X,Y)), cell(c(X,Y),V), white(c(X',Y), V), X!=X'.
 % :- black(c(X,Y)), cell(c(X,Y),V), white(c(X,Y'), V), Y!=Y'.
 connected(X, Y) :- white(X, _), white(Y, _), adj(X, Y). % Casillas blancas tienen que estar unidas

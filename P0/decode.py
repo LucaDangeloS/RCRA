@@ -7,7 +7,7 @@ import re
 
 white = "white"
 black = "black"
-black_cell_format = "\(\d+,\d+\)"     # (n,n2)
+black_cell_format = "\(\d+,\d+\)"    # (n,n2)
 white_cell_format = "\(\d+,\d+\),."  # (n,n2),n3
 regex_white = f"({white})\(c({white_cell_format})"  # white(c(n,n2),n3)
 regex_black = f"({black})\(c({black_cell_format})"  # black(c(n,n2))
@@ -30,10 +30,10 @@ if __name__ == '__main__':
         hitori_matrix = [[0 for _ in range(n)] for _ in range(n)]
 
         for i in results:
-            if i[0] == black:
+            if i[0] == black:   # ('black', 0,1)
                 idx = [int(j) for j in i[1].split(',')]
                 hitori_matrix[idx[0]][idx[1]] = '*'
-            elif i[0] == white:
+            elif i[0] == white: # # ('white', 0,1,2)
                 val = i[1].split(',')[2]
                 idx = [int(j) for j in i[1].split(',')[:2]]
                 hitori_matrix[idx[0]][idx[1]] = val
