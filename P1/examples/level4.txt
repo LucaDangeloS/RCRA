@@ -1,0 +1,7 @@
+a..bbb
+a..c.d
+ee.cfd
+ggg.fd
+..h.ii
+jjhkk.
+e=4

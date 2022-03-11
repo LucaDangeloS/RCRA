@@ -1,0 +1,8 @@
+aa...b
+c..e.b
+cdde.b
+c..e..
+f...gg
+f.hhh.
+d=4
+

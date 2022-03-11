@@ -1,0 +1,28 @@
+SATISFIABLE
+ State 0:
+ State 1:
+  move(g,2)
+ State 2:
+  move(e,1)
+ State 3:
+  move(a,3)
+ State 4:
+  move(d,2)
+ State 5:
+  move(f,-3)
+ State 6:
+  move(d,-2)
+ State 7:
+  move(e,-1)
+ State 8:
+  move(a,-3)
+ State 9:
+  move(g,-4)
+ State 10:
+  move(e,2)
+ State 11:
+  move(c,3)
+ State 12:
+  move(a,3)
+ State 13:
+  move(d,4)

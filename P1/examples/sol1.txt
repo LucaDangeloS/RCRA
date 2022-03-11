@@ -1,0 +1,14 @@
+SATISFIABLE
+ State 0:
+ State 1:
+  move(b,1)
+ State 2:
+  move(c,-4)
+ State 3:
+  move(e,1)
+ State 4:
+  move(d,-2)
+ State 5:
+  move(a,3)
+ State 6:
+  move(b,3)
