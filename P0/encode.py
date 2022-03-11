@@ -1,6 +1,8 @@
 #!/bin/python3
+# Luca D'angelo Sabin        Kevin Millán Canchapoma     Grupo: 3.1
 import sys
 # Usage: ./encode.py < hitori.txt > out.txt
+
 if __name__ == '__main__':
     row = -1
     extra_vals = ["a", "b", "c"]

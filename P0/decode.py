@@ -1,4 +1,5 @@
 #!/bin/python3
+# Luca D'angelo Sabin        Kevin Millán Canchapoma     Grupo: 3.1
 from math import sqrt
 import sys
 import re
