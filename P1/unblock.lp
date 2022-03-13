@@ -1,7 +1,71 @@
-type(sense,{horizontal ; vertical} ).
-type(size, val(1..n)).
-type(letter, digit(a..z)).
+#program always.
+
+n(-size..size).
+sense(horizontal; vertical).
+action(move(L, N)) :- block(L, S, SZ), n(N).
+
+#program dynamic.
+% Generacion de la siguiente acción
+1 {o(A) : _action(A) } 1.
+
+% Axiomas de efecto
+h(block(L, vertical, SZ), c(X+N,Y))  :- o(move(L, N)), 'h(block(L, vertical, SZ), c(X,Y)).      % Mover un bloque verticalmente
+h(block(L, horizontal, SZ), c(X,Y+N))  :- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X,Y)).  % Mover un bloque horizontalmente
+
+% Inercia
+h(block(L, S, SZ) , c(X,Y)) :- 'h(block(L, S, SZ), c(X,Y)), not o(move(L, _)). % Estado no cambia si no se mueve bloque
+move(L, N) :- o(move(L, N)). % Definición de movimientos
+
+% Limitaciones de tablero
+:- o(move(L, N)), 'h(block(L, vertical, SZ), c(X,_)), X+SZ+N > size.    % No salirse por abajo
+:- o(move(L, N)), 'h(block(L, vertical, SZ), c(X,_)), X+N < 0.          % No salirse por arriba
+:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X,Y)), Y+SZ+N > size.  % No salirse por la derecha
+:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X,Y)), Y+N < 0.        % No salirse por la izquierda
+
+% ...a..
+% ...a..
+% bb.a..
+% ......
+% c.ddd.
+% c..ee.
+% b=4
+
+% fail if move is blocked
+% :- blocked(t,X3,Y), stone(t-1,S,x,X1,Y,L), move(t,S,x,X2), X1 < X2, X1 + L <= X3, X3 < X2 + L.
+% :- blocked(t,X3,Y), stone(t-1,S,x,X1,Y,_), move(t,S,x,X2), X2 < X1, X2     <= X3, X3 < X1.
+% :- blocked(t,X,Y3), stone(t-1,S,y,X,Y1,L), move(t,S,y,Y2), Y1 < Y2, Y1 + L <= Y3, Y3 < Y2 + L.
+% :- blocked(t,X,Y3), stone(t-1,S,y,X,Y1,_), move(t,S,y,Y2), Y2 < Y1, Y2     <= Y3, Y3 < Y1.
+
+% #program initial. which applies only to the first state
+% #program always. which applies to each state
+% #program dynamic. which applies to all except the first state
+% #program final. which applies only to the last state
+
+% https://github.com/potassco/telingo
+
+#program initial.
+#const size=6.
+block(e, horizontal, 2).
+block(d, horizontal, 3).
+block(c, vertical, 2).
+block(b, horizontal, 2).
+block(a, vertical, 3).
+
+h(block(a, vertical, 3), c(0,3)).
+h(block(b, horizontal, 2), c(2,0)).
+h(block(c, vertical, 2), c(4,0)).
+h(block(d, horizontal, 3), c(4,2)).
+h(block(e, horizontal, 2), c(5,3)).
+
+% &tel {
+%     &true
+%   ;> o(move(a, 1))
+%   ;> o(move(b, 4))
+% }.
+#program final.
+goal :- h(block(b, horizontal, 2), c(2,4)).
+:- not goal.
 
 
-%Letter, (X Y), Size, Sense.
-block(L, X, Y, SZ, S) :- .
+#show h/2.
+#show move/2.
