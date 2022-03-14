@@ -26,9 +26,9 @@ move(L, N) :- o(move(L, N)). % Definición de movimientos
 :- o(move(L, N)), 'h(block(L, horizontal, SZ), c(_,Y)), Y+N < 0.        % No salirse por la izquierda
 
 :- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X, Y)), 'ocupado(L', X, Y..Y+N+SZ-1), L!=L', N>0.
-:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X, Y)), 'ocupado(L', X, Y..Y+N), L!=L', N<0.
+:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X, Y)), 'ocupado(L', X, Y+N..Y), L!=L', N<0.
 :- o(move(L, N)), 'h(block(L, vertical, SZ), c(X, Y)), 'ocupado(L', X..X+N+SZ-1, Y), L!=L', N>0.
-:- o(move(L, N)), 'h(block(L, vertical, SZ), c(X, Y)), 'ocupado(L', X..X+N, Y), L!=L', N<0.
+:- o(move(L, N)), 'h(block(L, vertical, SZ), c(X, Y)), 'ocupado(L', X+N..X, Y), L!=L', N<0.
 
 % ...a..
 % ...a..
@@ -77,4 +77,4 @@ goal :- h(block(b, horizontal, 2), c(2,4)).
 
 % #show h/2.
 #show move/2.
-#show ocupado/3.
+% #show ocupado/3.
