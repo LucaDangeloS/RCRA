@@ -156,7 +156,7 @@ h(block(e, vertical,   2), c(2,3)).
 h(block(d, horizontal, 2), c(2,0)).
 h(block(c, vertical,   3), c(0,5)).
 h(block(b, vertical,   2), c(0,3)).
-h(block(a, vertical,   2), c(0,2)).
+h(block(a, vertical,   3), c(0,2)).
 
 #program final.
 goal :- h(block(d, horizontal, 2), c(2,4)).
@@ -177,7 +177,7 @@ block(c, horizontal, 2).
 block(b, vertical,   2).
 block(a, horizontal, 2).
 
-h(block(k, horizontal, 3), c(3,0)).
+h(block(k, horizontal, 3), c(5,3)).
 h(block(j, vertical,   2), c(4,0)).
 h(block(i, vertical,   2), c(3,2)).
 h(block(h, horizontal, 2), c(3,0)).

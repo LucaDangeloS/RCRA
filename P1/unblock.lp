@@ -43,26 +43,12 @@ move(L, N) :- o(move(L, N)). % Definición de movimientos
 
 % https://github.com/potassco/telingo
 
-% #program initial.
-% #const size=6.
-% block(e, horizontal, 2).
-% block(d, horizontal, 3).
-% block(c, vertical, 2).
-% block(b, horizontal, 2).
-% block(a, vertical, 3).
-
-% h(block(a, vertical, 3), c(0,3)).
-% h(block(b, horizontal, 2), c(2,0)).
-% h(block(c, vertical, 2), c(4,0)).
-% h(block(d, horizontal, 3), c(4,2)).
-% h(block(e, horizontal, 2), c(5,3)).
 
 % &tel {
 %     &true
 %   ;> o(move(b, 1))
 %   ;> o(move(c, -3))
 % }.
-
 
 %%Ejemplo 6
 
@@ -83,13 +69,12 @@ h(block(e, vertical,   2), c(2,3)).
 h(block(d, horizontal, 2), c(2,0)).
 h(block(c, vertical,   3), c(0,5)).
 h(block(b, vertical,   2), c(0,3)).
-h(block(a, vertical,   2), c(0,2)).
+h(block(a, vertical,   3), c(0,2)).
 
 #program final.
 goal :- h(block(d, horizontal, 2), c(2,4)).
 
 #program final.
-% goal :- h(block(b, horizontal, 2), c(2,4)).
 :- not goal.
 
 
