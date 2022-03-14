@@ -4,6 +4,9 @@ n(-size..size).
 sense(horizontal; vertical).
 action(move(L, N)) :- block(L, S, SZ), n(N).
 
+ocupado(L, X..X+SZ-1,Y) :- h(block(L, vertical, SZ), c(X,Y)).
+ocupado(L, X,Y..Y+SZ-1) :- h(block(L, horizontal, SZ), c(X,Y)).
+
 #program dynamic.
 % Generacion de la siguiente acción
 1 {o(A) : _action(A) } 1.
@@ -19,8 +22,13 @@ move(L, N) :- o(move(L, N)). % Definición de movimientos
 % Limitaciones de tablero
 :- o(move(L, N)), 'h(block(L, vertical, SZ), c(X,_)), X+SZ+N > size.    % No salirse por abajo
 :- o(move(L, N)), 'h(block(L, vertical, SZ), c(X,_)), X+N < 0.          % No salirse por arriba
-:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X,Y)), Y+SZ+N > size.  % No salirse por la derecha
-:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X,Y)), Y+N < 0.        % No salirse por la izquierda
+:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(_,Y)), Y+SZ+N > size.  % No salirse por la derecha
+:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(_,Y)), Y+N < 0.        % No salirse por la izquierda
+
+:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X, Y)), 'ocupado(L', X, Y..Y+N+SZ-1), L!=L', N>0.
+:- o(move(L, N)), 'h(block(L, horizontal, SZ), c(X, Y)), 'ocupado(L', X, Y..Y+N), L!=L', N<0.
+:- o(move(L, N)), 'h(block(L, vertical, SZ), c(X, Y)), 'ocupado(L', X..X+N+SZ-1, Y), L!=L', N>0.
+:- o(move(L, N)), 'h(block(L, vertical, SZ), c(X, Y)), 'ocupado(L', X..X+N, Y), L!=L', N<0.
 
 % ...a..
 % ...a..
@@ -59,13 +67,14 @@ h(block(e, horizontal, 2), c(5,3)).
 
 % &tel {
 %     &true
-%   ;> o(move(a, 1))
-%   ;> o(move(b, 4))
+%   ;> o(move(b, 1))
+%   ;> o(move(c, -3))
 % }.
 #program final.
 goal :- h(block(b, horizontal, 2), c(2,4)).
 :- not goal.
 
 
-#show h/2.
+% #show h/2.
 #show move/2.
+#show ocupado/3.
