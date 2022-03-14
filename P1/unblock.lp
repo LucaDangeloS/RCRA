@@ -30,14 +30,6 @@ move(L, N) :- o(move(L, N)). % Definición de movimientos
 :- o(move(L, N)), 'h(block(L, vertical, SZ), c(X, Y)), 'ocupado(L', X..X+N+SZ-1, Y), L!=L', N>0.
 :- o(move(L, N)), 'h(block(L, vertical, SZ), c(X, Y)), 'ocupado(L', X+N..X, Y), L!=L', N<0.
 
-% ...a..
-% ...a..
-% bb.a..
-% ......
-% c.ddd.
-% c..ee.
-% b=4
-
 % fail if move is blocked
 % :- blocked(t,X3,Y), stone(t-1,S,x,X1,Y,L), move(t,S,x,X2), X1 < X2, X1 + L <= X3, X3 < X2 + L.
 % :- blocked(t,X3,Y), stone(t-1,S,x,X1,Y,_), move(t,S,x,X2), X2 < X1, X2     <= X3, X3 < X1.
@@ -51,27 +43,53 @@ move(L, N) :- o(move(L, N)). % Definición de movimientos
 
 % https://github.com/potassco/telingo
 
-#program initial.
-#const size=6.
-block(e, horizontal, 2).
-block(d, horizontal, 3).
-block(c, vertical, 2).
-block(b, horizontal, 2).
-block(a, vertical, 3).
+% #program initial.
+% #const size=6.
+% block(e, horizontal, 2).
+% block(d, horizontal, 3).
+% block(c, vertical, 2).
+% block(b, horizontal, 2).
+% block(a, vertical, 3).
 
-h(block(a, vertical, 3), c(0,3)).
-h(block(b, horizontal, 2), c(2,0)).
-h(block(c, vertical, 2), c(4,0)).
-h(block(d, horizontal, 3), c(4,2)).
-h(block(e, horizontal, 2), c(5,3)).
+% h(block(a, vertical, 3), c(0,3)).
+% h(block(b, horizontal, 2), c(2,0)).
+% h(block(c, vertical, 2), c(4,0)).
+% h(block(d, horizontal, 3), c(4,2)).
+% h(block(e, horizontal, 2), c(5,3)).
 
 % &tel {
 %     &true
 %   ;> o(move(b, 1))
 %   ;> o(move(c, -3))
 % }.
+
+
+%%Ejemplo 6
+
+#program initial.
+#const size=6.
+
+block(g, horizontal, 2).
+block(f, vertical,   2).
+block(e, vertical,   2).
+block(d, horizontal, 2).
+block(c, vertical,   3).
+block(b, vertical,   2).
+block(a, vertical,   3).
+
+h(block(g, horizontal, 2), c(4,2)).
+h(block(f, vertical,   2), c(3,1)).
+h(block(e, vertical,   2), c(2,3)).
+h(block(d, horizontal, 2), c(2,0)).
+h(block(c, vertical,   3), c(0,5)).
+h(block(b, vertical,   2), c(0,3)).
+h(block(a, vertical,   2), c(0,2)).
+
 #program final.
-goal :- h(block(b, horizontal, 2), c(2,4)).
+goal :- h(block(d, horizontal, 2), c(2,4)).
+
+#program final.
+% goal :- h(block(b, horizontal, 2), c(2,4)).
 :- not goal.
 
 

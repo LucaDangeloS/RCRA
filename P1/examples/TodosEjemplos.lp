@@ -14,7 +14,7 @@ h(block(c, vertical, 2), c(4,0)).
 h(block(d, horizontal, 3), c(4,2)).
 h(block(e, horizontal, 2), c(5,3)).
 
-#program final
+#program final.
 goal :- h(block(b, horizontal, 2), c(2,4)).
 
 
@@ -40,7 +40,7 @@ h(block(c, vertical,   3), c(1,0)).
 h(block(b, vertical,   3), c(0,5)).
 h(block(a, horizontal, 2), c(0,0)).
 
-#program final
+#program final.
 goal :- h(block(d, horizontal, 2), c(2,4)).
 
 %%Ejemplo 3
@@ -73,7 +73,7 @@ h(block(c, vertical,   2), c(0,2)).
 h(block(b, vertical,   2), c(0,1)).
 h(block(a, vertical,   2), c(0,0)).
 
-#program final
+#program final.
 goal :- h(block(f, horizontal, 2), c(2,4)).
 
 %%Ejemplo 4
@@ -105,7 +105,7 @@ h(block(c, vertical,   2), c(1,3)).
 h(block(b, horizontal, 3), c(0,3)).
 h(block(a, vertical,   2), c(0,0)).
 
-#program final
+#program final.
 goal :- h(block(e, horizontal, 2), c(2,4)).
 
 %%Ejemplo 5
@@ -134,7 +134,7 @@ h(block(c, horizontal, 3), c(1,1)).
 h(block(b, vertical,   2), c(0,4)).
 h(block(a, horizontal, 2), c(0,1)).
 
-#program final
+#program final.
 goal :- h(block(e, horizontal, 2), c(2,4)).
 
 %%Ejemplo 6
@@ -148,17 +148,17 @@ block(e, vertical,   2).
 block(d, horizontal, 2).
 block(c, vertical,   3).
 block(b, vertical,   2).
-block(a, vertical,   2).
+block(a, vertical,   3).
 
 h(block(g, horizontal, 2), c(4,2)).
 h(block(f, vertical,   2), c(3,1)).
 h(block(e, vertical,   2), c(2,3)).
-h(block(d, horizontal, 2), c(2.0)).
+h(block(d, horizontal, 2), c(2,0)).
 h(block(c, vertical,   3), c(0,5)).
 h(block(b, vertical,   2), c(0,3)).
 h(block(a, vertical,   2), c(0,2)).
 
-#program final
+#program final.
 goal :- h(block(d, horizontal, 2), c(2,4)).
 
 %%Ejemplo 7
@@ -189,5 +189,5 @@ h(block(c, horizontal, 2), c(1,0)).
 h(block(b, vertical,   2), c(0,3)).
 h(block(a, horizontal, 2), c(0,0)).
 
-#program final
+#program final.
 goal :- h(block(f, horizontal, 2), c(2,4)).
