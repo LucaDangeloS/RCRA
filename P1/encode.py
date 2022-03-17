@@ -57,9 +57,10 @@ def build_goal_lp(block, goal_pos):
 
 
 # Builds the final lp string
-def build_lp_string(block_list, goal_block, goal_pos, size):
+def build_lp_string(block_list, goal_block, goal_pos, h, w):
     lp_str = "#program initial.\n"
-    lp_str += f"#const size={size}.\n"
+    lp_str += f"#const height={h}.\n"
+    lp_str += f"#const width={w}.\n"
     for block in block_list:
         lp_str += build_block_lp(block)
 
@@ -83,8 +84,6 @@ if __name__ == '__main__':
 
     h, w = len(table_state), len(table_state[0])
 
-    assert(h==w) # Solo acepta tableros cuadrados
-
     letters = [x for x in set(input_matrix) if x.isalpha()]
     letters.sort()
     
@@ -95,6 +94,6 @@ if __name__ == '__main__':
     goal_block = [x for x in blocks if x[0] == goal[0]][0]
     goal_pos = goal[1]
 
-    print(build_lp_string(blocks, goal_block, goal_pos, h))
+    print(build_lp_string(blocks, goal_block, goal_pos, h, w))
     
     exit()
