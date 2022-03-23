@@ -1,4 +1,4 @@
-Para generar el tablero de hitori para clingo con encode.py, para un tablero de hitori X:
+Para generar el tablero de hitori para clingo, para un tablero de hitori X:
 
     ./encode.py < hitori_X.txt > hitoriX.lp
 
